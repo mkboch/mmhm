@@ -1015,6 +1015,21 @@
     const filterButtons = document.querySelectorAll(".filter-btn");
     const pubItems = document.querySelectorAll(".pub-item[data-type]");
 
+    const publicationCounts = {
+      all: pubItems.length,
+      journal: document.querySelectorAll('.pub-item[data-type="journal"]').length,
+      conference: document.querySelectorAll('.pub-item[data-type="conference"]').length,
+      preprint: document.querySelectorAll('.pub-item[data-type="preprint"]').length,
+      submitted: document.querySelectorAll('.pub-item[data-type="submitted"]').length
+    };
+
+    filterButtons.forEach(btn => {
+      const filter = btn.dataset.filter;
+      const baseLabel = btn.textContent.replace(/\s*\(\d+\)\s*$/, "").trim();
+      const count = publicationCounts[filter] ?? 0;
+      btn.textContent = `${baseLabel} (${count})`;
+    });
+
     filterButtons.forEach(btn => {
       btn.addEventListener("click", () => {
         filterButtons.forEach(b => b.classList.remove("active"));
