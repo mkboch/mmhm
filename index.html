@@ -1024,26 +1024,49 @@
       submitted: 3
     };
 
+    const getPublicationYear = (item) => {
+      const yearText = item.querySelector(".pub-year")?.textContent.trim() || "";
+      const year = parseInt(yearText, 10);
+      return Number.isFinite(year) ? year : -1;
+    };
+
     pubItems
       .sort((a, b) => {
+        const yearDifference =
+          getPublicationYear(b) - getPublicationYear(a);
+
+        if (yearDifference !== 0) {
+          return yearDifference;
+        }
+
         return (publicationOrder[a.dataset.type] ?? 99)
           - (publicationOrder[b.dataset.type] ?? 99);
       })
       .forEach(item => pubList.appendChild(item));
 
     const publicationCounts = {
-      all: pubItems.length,
       journal: document.querySelectorAll('.pub-item[data-type="journal"]').length,
       conference: document.querySelectorAll('.pub-item[data-type="conference"]').length,
       preprint: document.querySelectorAll('.pub-item[data-type="preprint"]').length,
       submitted: document.querySelectorAll('.pub-item[data-type="submitted"]').length
     };
 
+    publicationCounts.all =
+      publicationCounts.journal +
+      publicationCounts.conference +
+      publicationCounts.preprint;
+
     filterButtons.forEach(btn => {
       const filter = btn.dataset.filter;
       const baseLabel = btn.textContent.replace(/\s*\(\d+\)\s*$/, "").trim();
       const count = publicationCounts[filter] ?? 0;
       btn.textContent = `${baseLabel} (${count})`;
+    });
+
+    pubItems.forEach(item => {
+      if (item.dataset.type === "submitted") {
+        item.style.display = "none";
+      }
     });
 
     filterButtons.forEach(btn => {
@@ -1054,7 +1077,13 @@
 
         pubItems.forEach(item => {
           const type = item.dataset.type;
-          item.style.display = (filter === "all" || filter === type) ? "grid" : "none";
+
+          const showItem =
+            filter === "all"
+              ? type !== "submitted"
+              : filter === type;
+
+          item.style.display = showItem ? "grid" : "none";
         });
       });
     });
