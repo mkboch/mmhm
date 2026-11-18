@@ -541,3 +541,18 @@ body[data-design="editorial"] .top-photo-ring,
 body[data-design="editorial"] .top-profile-photo {
   border-radius: 8px;
 }
+
+/* Invisible measure for the justified introduction. */
+.hero-sub.justified-frame {
+  width: 100%;
+  max-width: 760px;
+  border: 1px solid transparent;
+  padding: 0.8rem 1rem;
+  text-align: justify;
+}
+
+@media (max-width: 640px) {
+  .hero-sub.justified-frame {
+    padding: 0.65rem 0.25rem;
+  }
+}
