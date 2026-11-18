@@ -244,9 +244,9 @@ body.dark[data-design="editorial"] {
 /* 02 Institutional: white field, RPI red, and crisp rectangular information blocks. */
 body[data-design="institutional"] {
   --bg: #ffffff;
-  --bg-soft: #f3f4f4;
+  --bg-soft: #ffffff;
   --bg-card: #ffffff;
-  --surface: #f3f4f4;
+  --surface: #ffffff;
   --text: #202a35;
   --muted: #5c6670;
   --border: #d9dee2;
@@ -254,7 +254,7 @@ body[data-design="institutional"] {
   --accent-2: #344d66;
   --accent-3: #455e50;
   --shadow: none;
-  --picker-bg: #f5f6f6;
+  --picker-bg: #ffffff;
   --picker-text: #404952;
   --serif: Georgia, "Times New Roman", serif;
   --sans: Arial, "Helvetica Neue", sans-serif;
@@ -291,18 +291,18 @@ body[data-design="institutional"] .mini-item {
 }
 
 body.dark[data-design="institutional"] {
-  --bg: #ffffff;
-  --bg-soft: #ffffff;
-  --bg-card: #ffffff;
-  --surface: #ffffff;
-  --text: #202a35;
-  --muted: #5c6670;
-  --border: #d9dee2;
-  --accent: #9d1d32;
-  --accent-2: #344d66;
-  --accent-3: #455e50;
-  --picker-bg: #ffffff;
-  --picker-text: #404952;
+  --bg: #171d24;
+  --bg-soft: #202832;
+  --bg-card: #1c242d;
+  --surface: #202832;
+  --text: #edf0f2;
+  --muted: #b0bac3;
+  --border: #39434c;
+  --accent: #df8290;
+  --accent-2: #91a9bf;
+  --accent-3: #a9c4b0;
+  --picker-bg: #202832;
+  --picker-text: #d9dfe4;
 }
 
 /* 03 Field Notes: deep green, parchment, and an archival serif hierarchy. */
