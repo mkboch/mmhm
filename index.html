@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="design-variants.css" />
 </head>
-<body>
+<body data-design="institutional">
   <div class="bg-scene" aria-hidden="true">
     <div class="bg-aurora aurora-1"></div>
     <div class="bg-aurora aurora-2"></div>
@@ -54,17 +54,6 @@
     </div>
   </nav>
 
-  <aside class="design-picker" aria-label="Website design previews">
-    <div class="design-picker-inner">
-      <span class="design-picker-label">Design preview</span>
-      <div class="design-options" role="group" aria-label="Choose a visual style">
-        <button class="design-option active" type="button" data-design="editorial" aria-pressed="true">01 Editorial</button>
-        <button class="design-option" type="button" data-design="institutional" aria-pressed="false">02 Institutional</button>
-        <button class="design-option" type="button" data-design="fieldnotes" aria-pressed="false">03 Field Notes</button>
-        <button class="design-option" type="button" data-design="modern" aria-pressed="false">04 Modern Classic</button>
-      </div>
-    </div>
-  </aside>
 
   <main id="top">
     <section class="hero hero-bg">
@@ -1017,25 +1006,6 @@
     const body = document.body;
     const themeToggle = document.getElementById("themeToggle");
     const siteNav = document.getElementById("siteNav");
-    const designOptions = document.querySelectorAll(".design-option[data-design]");
-    const savedDesign = localStorage.getItem("siteDesign");
-    const supportedDesigns = ["editorial", "institutional", "fieldnotes", "modern"];
-
-    const setDesign = (design) => {
-      if (!supportedDesigns.includes(design)) return;
-      body.dataset.design = design;
-      localStorage.setItem("siteDesign", design);
-      designOptions.forEach((option) => {
-        const isActive = option.dataset.design === design;
-        option.classList.toggle("active", isActive);
-        option.setAttribute("aria-pressed", String(isActive));
-      });
-    };
-
-    setDesign(supportedDesigns.includes(savedDesign) ? savedDesign : "editorial");
-    designOptions.forEach((option) => {
-      option.addEventListener("click", () => setDesign(option.dataset.design));
-    });
 
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "dark") {
