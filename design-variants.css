@@ -511,3 +511,33 @@ body.dark[data-design="modern"] {
     transition: none;
   }
 }
+/* Gentle corners across every selectable style. */
+body[data-design] .hero-panel,
+body[data-design] .card,
+body[data-design] .pub-item,
+body[data-design] .contact-link,
+body[data-design] .timeline-item,
+body[data-design] .list-item,
+body[data-design] .skill-card,
+body[data-design] .research-item {
+  border-radius: 10px;
+}
+
+body[data-design] .mini-item {
+  border-radius: 7px;
+}
+
+body[data-design] .btn,
+body[data-design] .filter-btn,
+body[data-design] .pub-link,
+body[data-design] .pub-badge,
+body[data-design] .nav-btn,
+.design-option,
+body[data-design] .hero-badge {
+  border-radius: 7px;
+}
+
+body[data-design="editorial"] .top-photo-ring,
+body[data-design="editorial"] .top-profile-photo {
+  border-radius: 8px;
+}
